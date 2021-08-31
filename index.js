@@ -2,11 +2,13 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const connection = require('./config/connection')
 
-const userOptions = () => {
+function userOptions() {
+const uOptions = () => {
     inquirer.prompt([
         {
             name: 'options',
             type: 'list',
+            message: 'Please choose from the options:',
             choices: [
                 'View All Departments',
                 'View All Roles',
@@ -20,35 +22,33 @@ const userOptions = () => {
         }
     ])
     .then((selection) => {
-        switch(selection.options) {
-            case 'View All Departments':
+        const {options} = selection;
+            if (options === 'View All Departments') {
                 viewAllDepartments();
-                break;
-            case 'View All Roles':
+            }
+            if (options === 'View All Roles') {
                 viewAllRoles();
-                break;
-            case 'View All Employees':
+            }
+            if (options === 'View All Employees') {
                 viewAllEmployees();
-                break;
-            case 'Add A Department':
+            }
+            if (options === 'Add A Department') {
                 addADepartment();
-                break;
-            case 'Add A Role':
+            }
+            if (options === 'Add A Roll') {
                 addARole();
-                break;
-            case 'Add an Employee':
+            }
+            if (options === 'Add An Employee') {
                 addAnEmployee();
-                break;
-            case 'Update An Employee Role':
+            }
+            if (options === 'Update An Employee Role') {
                 updateRole();
-                break;
-            // case 'Exit':
+            }
+            // if (options === 'Exit') {
             //     connection.end();
-            //     break;
-            // default:
-            //     break;
-        }
+            // }
     });
+};
 };
 
 
