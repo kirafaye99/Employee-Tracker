@@ -3,7 +3,7 @@ const cTable = require('console.table');
 const connection = require('./config/connection')
 
 function userOptions() {
-const uOptions = () => {
+// const uOptions = () => {
     inquirer.prompt([
         {
             name: 'options',
@@ -49,12 +49,12 @@ const uOptions = () => {
             // }
     });
 };
-};
+// };
 
 
 //"view all ..." functions
 
-const viewAllDepartments = () => {
+function viewAllDepartments() {
     connection.query('SELECT * FROM department', (error, input) => {
         if (error) throw error;
         console.table(input);
@@ -62,7 +62,7 @@ const viewAllDepartments = () => {
     })
 };
 
-const viewAllRoles = () => {
+function viewAllRoles() {
     connection.query('SELECT * FROM roles', (error, input) => {
         if (error) throw error;
         console.table(input);
@@ -70,7 +70,7 @@ const viewAllRoles = () => {
     })
 };
 
-const viewAllEmployees = () => {
+function viewAllEmployees() {
     connection.query('SELECT * FROM employee', (error, input) => {
         if (error) throw error;
         console.table(input);
@@ -80,7 +80,7 @@ const viewAllEmployees = () => {
 
 //"add ..." functions
 
-const addADepartment = () => {
+function addADepartment() {
     inquirer.prompt([
         {
             name: 'department',
@@ -98,7 +98,7 @@ const addADepartment = () => {
     ])
 };
 
-const addARole = () => {
+function addARole() {
     inquirer.prompt([
         {
             name: 'title',
@@ -129,7 +129,7 @@ const addARole = () => {
     })
 };
 
-const addAnEmployee = () => {
+function addAnEmployee() {
     inquirer.prompt([
         {
             name: 'first',
@@ -167,7 +167,7 @@ const addAnEmployee = () => {
 
 // "update ..." function
 
-const updateRole = () => {
+function updateRole() {
     inquirer.prompt([
         {
             name: 'role',
