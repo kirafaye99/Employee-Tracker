@@ -2,46 +2,69 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const connection = require('./config/connection')
 
+const {prompt} = require("inquirer");
+
 function userOptions() {
 // const uOptions = () => {
-    inquirer.prompt([
+    prompt([
         {
             name: 'options',
             type: 'list',
             message: 'Please choose from the options:',
             choices: [
-                'View All Departments',
-                'View All Roles',
-                'View All Employees',
-                'Add A Department',
-                'Add A Role',
-                'Add An Employee',
-                'Update An Employee Role',
+                {
+                    name: 'View All Departments',
+                    value: 'VIEW_DEPARTMENTS'
+                },
+                {
+                    name: 'View All Roles',
+                    value: 'VIEW_ROLES'
+                },
+                {
+                    name: 'View All Employees',
+                    value: 'VIEW_EMPLOYEES'
+                },
+                {
+                    name: 'Add A Department',
+                    value: 'ADD_DEPARTMENT'
+                },
+                {
+                    name: 'Add A Role',
+                    value: 'ADD_ROLE'
+                },
+                {
+                    name: 'Add An Employee',
+                    value: 'ADD_EMPLOYEE'
+                },
+                {
+                    name: 'Update An Employee Role',
+                    value: 'UPDATE_ROLE'
+                },
                 // 'Exit'
             ]
         }
     ])
     .then((selection) => {
         const {options} = selection;
-            if (options === 'View All Departments') {
+            if (options === 'VIEW_DEPARTMENTS') {
                 viewAllDepartments();
             }
-            if (options === 'View All Roles') {
+            if (options === 'VIEW_ROLES') {
                 viewAllRoles();
             }
-            if (options === 'View All Employees') {
+            if (options === 'VIEW_EMPLOYEES') {
                 viewAllEmployees();
             }
-            if (options === 'Add A Department') {
+            if (options === 'ADD_DEPARTMENT') {
                 addADepartment();
             }
-            if (options === 'Add A Roll') {
+            if (options === 'ADD_ROLE') {
                 addARole();
             }
-            if (options === 'Add An Employee') {
+            if (options === 'ADD_EMPLOYEE') {
                 addAnEmployee();
             }
-            if (options === 'Update An Employee Role') {
+            if (options === 'UPDATE_ROLE') {
                 updateRole();
             }
             // if (options === 'Exit') {
@@ -81,7 +104,7 @@ function viewAllEmployees() {
 //"add ..." functions
 
 function addADepartment() {
-    inquirer.prompt([
+    prompt([
         {
             name: 'department',
             type: 'input',
@@ -99,7 +122,7 @@ function addADepartment() {
 };
 
 function addARole() {
-    inquirer.prompt([
+    prompt([
         {
             name: 'title',
             type: 'input',
@@ -130,7 +153,7 @@ function addARole() {
 };
 
 function addAnEmployee() {
-    inquirer.prompt([
+    prompt([
         {
             name: 'first',
             type: 'input',
@@ -168,7 +191,7 @@ function addAnEmployee() {
 // "update ..." function
 
 function updateRole() {
-    inquirer.prompt([
+    prompt([
         {
             name: 'role',
             type: 'input',
